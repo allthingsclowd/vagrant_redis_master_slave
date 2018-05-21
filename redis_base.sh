@@ -1,4 +1,9 @@
 #!/usr/bin/env bash
+slave_ip=$1
+master_ip=$2
+slave_name=$3
+master_name=$4
+
 
 # Idempotency hack - if this file exists don't run the rest of the script
 if [ -f "/var/vagrant_redis_base" ]; then
@@ -6,8 +11,8 @@ if [ -f "/var/vagrant_redis_base" ]; then
 fi
 
 touch /var/vagrant_redis_base
-echo "192.168.1.200     local-vagrant-prodredis001.vagrant.local" >> /etc/hosts
-echo "192.168.1.201     local-vagrant-prodredis002.vagrant.local" >> /etc/hosts
+echo "${master_ip}     ${master_name}" >> /etc/hosts
+echo "${slave_ip}     ${slave_name}" >> /etc/hosts
 sudo apt-get update && \
     sudo apt-get upgrade -y && \
     sudo apt-get install -y redis-server
