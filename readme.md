@@ -18,7 +18,7 @@ brew install redis
 
 Log into the master node and create an entry as follows:
 ``` bash
-redis-cli -a 's0m3th!ngr0tt3n?' -h 192.168.1.200
+redis-cli -a 's0m3th!ngr0tt3n?' -h 192.168.2.200
 set foo bar
 get foo
 exit
@@ -26,7 +26,7 @@ exit
 
 Now log in to the read-only slave server and verify that the redis cache has been synchronised:
 ``` bash
-redis-cli -a 's0m3th!ngr0tt3n?' -h 192.168.1.201
+redis-cli -a 's0m3th!ngr0tt3n?' -h 192.168.2.201
 get foo
 exit
 ```
